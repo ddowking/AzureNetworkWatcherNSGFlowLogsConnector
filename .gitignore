@@ -1,3 +1,5 @@
 .vs/**
 Samples/**
 NwNSGProject/Properties/**
+.vscode
+local.settings.json
