@@ -35,7 +35,7 @@ namespace nsgFunc
             // ,{...}
             //
             // - OR -
-            //  
+            //
             // {...}   <-- note lack of leading comma
             // ,{...}
             //  ...
@@ -61,7 +61,7 @@ namespace nsgFunc
             {
                 sb.Append("{\"records\":[").Append(nsgMessagesString).Append("]}");
                 newClientContent = sb.ToString();
-            } 
+            }
             finally
             {
                 StringBuilderPool.Free(sb);
@@ -114,7 +114,7 @@ namespace nsgFunc
             static SingleHttpClientInstance()
             {
                 HttpClient = new HttpClient();
-                HttpClient.Timeout = new TimeSpan(0, 1, 0);
+                HttpClient.Timeout = TimeSpan.FromMinutes(5);
             }
 
             public static async Task<HttpResponseMessage> SendToLogstash(HttpRequestMessage req, ILogger log)
@@ -184,7 +184,7 @@ namespace nsgFunc
                                     innerFlow.mac,
                                     tuple);
 
-                                var sizeOfDenormalizedRecord = denormalizedRecord.GetSizeOfJSONObject(); 
+                                var sizeOfDenormalizedRecord = denormalizedRecord.GetSizeOfJSONObject();
 
                                 //for Event hub binding fork  -- start
                                 // Event hub basic message size is 256KB and the 'if' statement below ensures that list does not exceed size this size for Eventhub
